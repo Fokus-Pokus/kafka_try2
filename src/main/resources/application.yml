@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: kafka-messagepack-stub
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      security.protocol: SASL_PLAINTEXT
+      sasl.mechanism: PLAIN
+
+app:
+  kafka:
+    username: kafka-user
+    password: kafka-password
+    jaas-config: org.apache.kafka.common.security.plain.PlainLoginModule required username="kafka-user" password="kafka-password";
+    rate-limit-ms: 200
+    group-ids:
+      group1: group-1
+      group2: group-2
+    topics:
+      topic1-input: topic-1
+      topic2-output: topic-2
+      topic3-input: topic-3
+      topic4-output: topic-4
+  templates:
+    path: templates
+
+logging:
+  level:
+    root: INFO
+    com.example.kafkastub: INFO
