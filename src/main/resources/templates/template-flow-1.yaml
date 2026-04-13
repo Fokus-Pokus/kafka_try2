@@ -1,0 +1,9 @@
+# Вложенный список (nested list) для FLOW-1:
+# [[id, type, payload]]
+- - "tpl-flow-1"
+  - "TEMPLATE_FLOW_1"
+  - source: "template-1"
+    action: "default-response"
+    payloadSeed:
+      fieldA: "valueA"
+      retries: 0
