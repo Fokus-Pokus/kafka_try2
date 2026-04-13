@@ -4,7 +4,6 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     properties:
-      # Требование задачи: SASL/PLAIN без SSL
       security.protocol: SASL_PLAINTEXT
       sasl.mechanism: PLAIN
 
@@ -12,9 +11,7 @@ app:
   kafka:
     username: kafka-user
     password: kafka-password
-    # Можно оставить пустым, тогда строка соберется автоматически из username/password
     jaas-config: org.apache.kafka.common.security.plain.PlainLoginModule required username="kafka-user" password="kafka-password";
-    # Простой rate-limit producer (Thread.sleep)
     rate-limit-ms: 200
     group-ids:
       group1: group-1
@@ -26,10 +23,6 @@ app:
       topic4-output: topic-4
   templates:
     path: templates
-    # По задаче: 2 исходных шаблона (вложенные списки), которые преобразуются в MessagePack бинарник
-    files:
-      - template-flow-1.yaml
-      - template-flow-2.yaml
 
 logging:
   level:

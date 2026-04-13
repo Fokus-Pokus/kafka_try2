@@ -1,0 +1,8 @@
+{
+  "id": "template-id",
+  "type": "TEMPLATE_RESPONSE",
+  "payload": {
+    "template": "default",
+    "description": "Base response template loaded at startup"
+  }
+}

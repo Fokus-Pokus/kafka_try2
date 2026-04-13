@@ -9,17 +9,6 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Маппер для нестабильного входного формата (object/array).
- *
- * <p>Поддерживаем 2 варианта:
- * 1) object: {"id":"...","type":"...","payload":{...}}
- * 2) array:  ["id","type",{...}]
- *
- * <p>Зачем это вынесено отдельно:
- * - listener/service не знают о деталях парсинга;
- * - проще расширять (например добавить v2 схемы).
- */
 @Component
 public class FlexibleMessageMapper {
 
@@ -49,7 +38,6 @@ public class FlexibleMessageMapper {
             return new MessageDto(id, type, payload);
         }
 
-        // Фолбэк для поврежденных/неожиданных форматов.
         return new MessageDto(null, "UNKNOWN", Map.of("raw", rootNode.asText()));
     }
 

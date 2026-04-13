@@ -10,12 +10,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Бизнес-логика формирования ответа.
- *
- * <p>Сначала берем шаблон (если есть), затем накладываем значения из входящего сообщения.
- * Это имитирует "продовый" подход, где шаблон задает базовую форму ответа.
- */
 @Service
 public class MessageProcessingService {
 

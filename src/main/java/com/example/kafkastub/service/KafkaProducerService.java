@@ -9,12 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
 
-/**
- * Producer-обертка c простым rate-limit перед отправкой.
- *
- * <p>Сделано осознанно примитивно (Thread.sleep), чтобы поведение было прозрачным и
- * легко заменялось на bucket4j/resilience4j при росте требований.
- */
 @Service
 public class KafkaProducerService {
 

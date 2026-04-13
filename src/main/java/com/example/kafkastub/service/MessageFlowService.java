@@ -7,10 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-/**
- * Оркестратор полного цикла обработки:
- * MessagePack вход -> DTO -> бизнес-обработка -> MessagePack выход -> отправка в Kafka.
- */
 @Service
 public class MessageFlowService {
 
@@ -39,7 +35,6 @@ public class MessageFlowService {
             byte[] responseBytes = messagePackService.serialize(response);
             kafkaProducerService.send(outputTopic, responseBytes);
         } catch (JsonProcessingException e) {
-            // Важный контракт по задаче: не падать на невалидном MessagePack.
             log.error("{} failed to deserialize/serialize MessagePack payload", flowName, e);
         } catch (Exception e) {
             log.error("{} unexpected processing error", flowName, e);

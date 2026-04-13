@@ -8,16 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.msgpack.jackson.dataformat.MessagePackFactory;
 import org.springframework.stereotype.Service;
 
-/**
- * Сервис конвертации MessagePack <-> DTO.
- *
- * <p>Почему отдельный сервис:
- * - отделяем формат транспорта (MessagePack) от бизнес-логики;
- * - одна точка для возможной настройки ObjectMapper/модулей.
- *
- * <p>Документация MessagePack for Jackson:
- * https://github.com/msgpack/msgpack-java/tree/master/msgpack-jackson
- */
 @Service
 public class MessagePackService {
 

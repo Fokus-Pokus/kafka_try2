@@ -21,18 +21,6 @@ import org.springframework.kafka.core.ProducerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Централизованная конфигурация Kafka producer/consumer.
- *
- * <p>Ключевые решения:
- * - KEY/VALUE как byte[]: мы вручную работаем с MessagePack сериализацией;
- * - отдельные consumer factory под group-1 и group-2;
- * - SASL/PLAIN параметры полностью управляются из application.yml.
- *
- * <p>Справка:
- * - Spring Kafka: https://docs.spring.io/spring-kafka/reference/
- * - Kafka security (SASL/PLAIN): https://kafka.apache.org/documentation/#security_sasl_plain
- */
 @Configuration
 @EnableConfigurationProperties(KafkaSecurityProperties.class)
 public class KafkaConfig {
@@ -107,11 +95,6 @@ public class KafkaConfig {
         return factory;
     }
 
-    /**
-     * Общие свойства клиента Kafka.
-     * JAAS можно задать напрямую (app.kafka.jaas-config),
-     * либо собрать автоматически из username/password.
-     */
     private Map<String, Object> commonClientProperties() {
         Map<String, Object> props = new HashMap<>();
         props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
